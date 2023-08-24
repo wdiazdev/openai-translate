@@ -7,8 +7,8 @@ export type AutoLanguage = typeof AUTO_LANGUAGE
 export type FromLanguage = Language | AutoLanguage
 
 export interface InitialState {
-  fromLanguage: string
-  toLanguage: string
+  fromLanguage: FromLanguage
+  toLanguage: Language
   fromText: string
   result: string
   loading: boolean
@@ -16,7 +16,12 @@ export interface InitialState {
 
 export type Action =
   | { type: "SWITCH_LANGUAGES" }
-  | { type: "SET_FROM_LANGUAGE"; payload: string }
-  | { type: "SET_TO_LANGUAGE"; payload: string }
+  | { type: "SET_FROM_LANGUAGE"; payload: FromLanguage }
+  | { type: "SET_TO_LANGUAGE"; payload: Language }
   | { type: "SET_FROM_TEXT"; payload: string }
   | { type: "SET_RESULT"; payload: string }
+
+export enum SectionType {
+  From = "From",
+  To = "To",
+}

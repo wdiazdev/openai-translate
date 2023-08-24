@@ -3,14 +3,18 @@ import "./App.css"
 import { ArrowsIcon } from "./components/Icons"
 import { useCustomReducer } from "./hook/useCustomReducer"
 import { AUTO_LANGUAGE } from "./languages"
+import { LanguageSelector } from "./components/LanguageSelector"
+import { SectionType } from "./types/types"
 
 function App() {
   const [isDisable, setIsDisable] = useState<boolean>(false)
-  const { setSwitchLaguages, fromLanguage, toLanguage } = useCustomReducer()
+  const { setSwitchLaguages, fromLanguage, toLanguage, setFromLanguage, setToLanguage } = useCustomReducer()
 
   useEffect(() => {
     if (fromLanguage === AUTO_LANGUAGE) {
       setIsDisable(true)
+    } else {
+      setIsDisable(false)
     }
   }, [fromLanguage])
 
@@ -20,8 +24,7 @@ function App() {
 
       <div className="flex items-center justify-center gap-4">
         <div>
-          <h3>From</h3>
-          <p>{fromLanguage}</p>
+          <LanguageSelector onChange={setFromLanguage} type={SectionType.From} value={fromLanguage} />
         </div>
         <div>
           <button
@@ -37,8 +40,7 @@ function App() {
           </button>
         </div>
         <div>
-          <h3>TO</h3>
-          <p>{toLanguage}</p>
+          <LanguageSelector onChange={setToLanguage} type={SectionType.To} value={toLanguage} />
         </div>
       </div>
     </div>
