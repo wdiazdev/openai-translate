@@ -13,7 +13,7 @@ export const LanguageSelector: FC<Props> = ({ onChange, type, value }) => {
   return (
     <div className="max-w-sm mx-auto space-y-6">
       <select
-        className="w-[200px] border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+        className="w-[265px] border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
         onChange={handleChange}
         value={value}
       >
